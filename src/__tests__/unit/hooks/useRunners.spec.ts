@@ -7,7 +7,7 @@ import { renderHook } from "@testing-library/react-hooks"
 import { screen } from "@testing-library/react"
 import { rest } from "msw"
 import { setupServer } from "msw/node"
-import { RunnerType } from "../../../types/runner-types"
+import { RunnerType } from "../../../types/gitlab/runner-types"
 
 const server = setupServer(
   rest.get("https://gitlab.com/api/v4/runners", (req, res, ctx) => {

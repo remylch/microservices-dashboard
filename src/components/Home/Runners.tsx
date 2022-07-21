@@ -1,6 +1,6 @@
 import React from "react"
 import Runner from "../Runners/runner"
-import { RunnerType } from "../../types/runner-types"
+import { RunnerType } from "../../types/gitlab/runner-types"
 import useRunners from "../../hooks/runners-hooks/useRunners"
 
 const Runners = () => {
@@ -29,9 +29,9 @@ const Runners = () => {
             />
           ))
         ) : (
-          <label data-testid="message-no-runner-running">
+          <span data-testid="message-no-runner-running">
             No runner is currently running.
-          </label>
+          </span>
         )}
       </div>
       <div className="relative border border-gray-300 my-10">
@@ -54,9 +54,9 @@ const Runners = () => {
           />
         ))
       ) : (
-        <label data-testid="message-no-runner-available">
+        <span data-testid="message-no-runner-available">
           No runner currently available.
-        </label>
+        </span>
       )}
     </div>
   )

@@ -1,15 +1,29 @@
-import React from "react";
-import { AiFillCode, AiFillSetting } from "react-icons/ai";
-import { FaRunning, FaChevronRight, FaChevronLeft } from "react-icons/fa";
-import { Link, useLocation } from "react-router-dom";
-import { IoMdExit } from "react-icons/io";
-import { SizeContext } from "../../hooks/size-observer";
-import gitlabLogo from "../../statics/images/gitlab-logo-500.svg";
+import React from "react"
+import { AiFillCode, AiFillSetting } from "react-icons/ai"
+import {
+  FaRunning,
+  FaChevronRight,
+  FaChevronLeft,
+  FaDocker,
+} from "react-icons/fa"
+import { Link, useLocation } from "react-router-dom"
+import { IoMdExit } from "react-icons/io"
+import { SizeContext } from "../../hooks/size-observer"
+import gitlabLogo from "../../statics/images/gitlab-logo-500.svg"
+import { MdOutlineApps } from "react-icons/md"
 
 const links = [
   {
     name: "code",
     Icon: AiFillCode,
+  },
+  {
+    name: "services",
+    Icon: MdOutlineApps,
+  },
+  {
+    name: "containers",
+    Icon: FaDocker,
   },
   {
     name: "runners",
@@ -19,32 +33,39 @@ const links = [
     name: "settings",
     Icon: AiFillSetting,
   },
-];
+]
 
 const Sidebar = () => {
-  const [isOpen, setIsOpen] = React.useState<boolean>(true);
+  const [isOpen, setIsOpen] = React.useState<boolean>(true)
 
-  const location = useLocation();
+  const location = useLocation()
 
-  const { innerWidth } = React.useContext(SizeContext);
+  const { innerWidth } = React.useContext(SizeContext)
 
   React.useEffect(() => {
     if (innerWidth <= 800) {
-      setIsOpen(false);
+      setIsOpen(false)
     } else {
-      setIsOpen(true);
+      setIsOpen(true)
     }
-  }, [innerWidth]);
+  }, [innerWidth])
+
+  const toggleSidebar = () => {
+    setIsOpen((open) => !open)
+  }
 
   return (
     <div
-      className={`max-h-screen transition transform-cpu duration-300 ease-in items-stretch justify-between bg-blue-500 min-h-full ${
+      className={`max-h-screen transition sticky left-0 top-0 transform-cpu duration-300 ease-in items-stretch justify-between bg-blue-500 min-h-full ${
         isOpen ? "w-1/4 min-w-min max-w-min" : "w-fit"
       } py-10`}
     >
       <div>
         <div
-          onClick={() => setIsOpen(!isOpen)}
+          role="button"
+          tabIndex={0}
+          onClick={toggleSidebar}
+          onKeyDown={toggleSidebar}
           className={`text-gray-200 flex self-end cursor-pointer ${
             isOpen ? "justify-end" : "justify-center"
           } px-5 w-full mb-10`}
@@ -96,10 +117,10 @@ const Sidebar = () => {
           isOpen ? "px-10 py-3" : " w-fit p-3"
         }   rounded-md text-white hover:bg-blue-800 cursor-pointer`}
       >
-        {isOpen ? <label>Disconnect</label> : <IoMdExit />}
+        {isOpen ? <span>Disconnect</span> : <IoMdExit />}
       </button>
     </div>
-  );
-};
+  )
+}
 
-export default Sidebar;
+export default Sidebar

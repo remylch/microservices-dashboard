@@ -1,25 +1,18 @@
 import React from "react"
 
 type Props = {
-  projects: any
-  setIdProjectSelected: any
+  projects: { name: string; id: string }[]
+  branchs: { name: string }[] | undefined
+  setIdProjectSelected: (e: React.ChangeEvent<HTMLSelectElement>) => void
+  setBranchSelected: (e: React.ChangeEvent<HTMLSelectElement>) => void
 }
 
-const TopBar: React.FC<Props> = ({ projects, setIdProjectSelected }) => {
-  const [project, setProject] = React.useState<string>("")
-  const [branche, setBranche] = React.useState<string>("")
-
-  const changeProject = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    e.preventDefault()
-    setIdProjectSelected(e.target.value)
-    setProject(e.target.value)
-  }
-
-  const changeBranche = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    e.preventDefault()
-    setBranche(e.target.value as string)
-  }
-
+const TopBar: React.FC<Props> = ({
+  branchs,
+  projects,
+  setIdProjectSelected,
+  setBranchSelected,
+}) => {
   return (
     <div className="h-24 flex items-center gap-5 px-10 border-b border-gray-100 w-full">
       <div>
@@ -28,12 +21,12 @@ const TopBar: React.FC<Props> = ({ projects, setIdProjectSelected }) => {
         </label>
         <select
           data-testid="project-selector"
-          onChange={changeProject}
+          onChange={setIdProjectSelected}
           className="selector"
           id="project"
         >
           <option data-testid="project-option"></option>
-          {projects.map((projetItem: { name: string; id: string }) => (
+          {projects.map((projetItem) => (
             <option
               key={projetItem.name}
               value={projetItem.id}
@@ -45,21 +38,23 @@ const TopBar: React.FC<Props> = ({ projects, setIdProjectSelected }) => {
         </select>
       </div>
       <div>
-        {project !== "" && project !== undefined && (
+        {branchs && (
           <>
             <label data-testid="label-branch" htmlFor="branch" className="mr-5">
               Branche
             </label>
             <select
               data-testid="branch-selector"
-              onChange={changeBranche}
+              onChange={setBranchSelected}
               id="branch"
               className="selector"
             >
               <option></option>
-              <option></option>
-              <option></option>
-              <option></option>
+              {branchs.map((branche) => (
+                <option key={branche.name} value={branche.name}>
+                  {branche.name}
+                </option>
+              ))}
             </select>
           </>
         )}
@@ -69,3 +64,5 @@ const TopBar: React.FC<Props> = ({ projects, setIdProjectSelected }) => {
 }
 
 export default TopBar
+
+export const MemoizedTopBar = React.memo(TopBar)

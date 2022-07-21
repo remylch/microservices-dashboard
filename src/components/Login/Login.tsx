@@ -1,13 +1,19 @@
-import gitlabLogo from "../../statics/images/gitlab-logo-500.svg";
-import { updateUser } from "../../store/userStore";
-import { useAppDispatch, useAppSelector } from "../../store/store";
+import gitlabLogo from "../../statics/images/gitlab-logo-500.svg"
+import { updateUser } from "../../store/userStore"
+import { useAppDispatch, useAppSelector } from "../../store/store"
+import { Dispatch, SetStateAction } from "react"
 
-const Login = ({ isAuth, setIsAuth }: any) => {
-  const dispatch = useAppDispatch();
+interface ILogin {
+  isAuth: boolean
+  setIsAuth: Dispatch<SetStateAction<boolean>>
+}
 
-  const user = useAppSelector((state) => state.user);
+const Login = ({ setIsAuth }: ILogin) => {
+  const dispatch = useAppDispatch()
 
-  console.log(user);
+  const user = useAppSelector((state) => state.user)
+
+  console.log(user)
   function login() {
     dispatch(
       updateUser({
@@ -17,8 +23,8 @@ const Login = ({ isAuth, setIsAuth }: any) => {
         password: "************",
         jwt: "a",
       })
-    );
-    setIsAuth(true);
+    )
+    setIsAuth(true)
   }
 
   return (
@@ -92,12 +98,9 @@ const Login = ({ isAuth, setIsAuth }: any) => {
                 </div>
 
                 <div className="text-sm">
-                  <a
-                    href="#"
-                    className="font-medium text-indigo-600 hover:text-indigo-500"
-                  >
+                  <button className="font-medium text-indigo-600 hover:text-indigo-500">
                     Forgot your password?
-                  </a>
+                  </button>
                 </div>
               </div>
 
@@ -115,7 +118,7 @@ const Login = ({ isAuth, setIsAuth }: any) => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login

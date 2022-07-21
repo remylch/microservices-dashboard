@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-import { screen, render, fireEvent } from "@testing-library/react"
+import { screen, render } from "@testing-library/react"
 import TopBar from "../../../../components/Settings/TopBar"
 import userEvent from "@testing-library/user-event"
 import "@testing-library/jest-dom/extend-expect"
@@ -10,8 +10,8 @@ import "@testing-library/jest-dom/extend-expect"
 function createTopBar() {
   const topBarProps = {
     projects: [
-      { name: "p1", id: 1 },
-      { name: "p2", id: 2 },
+      { name: "p1", id: "1" },
+      { name: "p2", id: "2" },
     ],
     setIdProjectSelected: jest.fn(),
   }
@@ -22,7 +22,7 @@ describe("test on TopBar component", () => {
   it("should render topBarCorrectly with props", () => {
     createTopBar()
     const projectSelector = screen.getByTestId("project-selector")
-    expect(projectSelector).toBeVisible
+    expect(projectSelector).toBeVisible()
   })
 
   it("change project selected", () => {

@@ -1,18 +1,21 @@
 import axios from "axios"
 import { toast } from "react-toastify"
+import { CommitType, ProjectType } from "../types/gitlab/project-types"
 import {
   RunnerInfoType,
   RunnerJobsType,
   RunnerType,
-} from "../types/runner-types"
+} from "../types/gitlab/runner-types"
 
 const baseUrl = "https://gitlab.com/"
-const accessTokenn = "glpat-2peYqPqwpMaM-JkTJsQN"
+const accessTokenn = process.env.REACT_APP_GITLAB_ACCESS_TOKEN
+
+console.log(accessTokenn)
 
 export const fetchGitlabProjects = async () =>
-  axios
-    .get(`${baseUrl}api/v4/projects?owned=true&access_token=${accessTokenn}`)
-    .catch((err) => console.log(err))
+  axios.get<ProjectType[]>(
+    `${baseUrl}api/v4/projects?owned=true&access_token=${accessTokenn}`
+  )
 
 export const fetchRunners = async () =>
   axios.get<RunnerType[]>(
@@ -49,6 +52,11 @@ export const startJob = async (
 }
 
 export const fetchProjectCommits = (projectId: number) =>
-  axios.get(
+  axios.get<CommitType[]>(
     `${baseUrl}api/v4/projects/${projectId}/repository/commits?access_token=${accessTokenn}`
+  )
+
+export const fetchRepositoryBranches = async (id: number) =>
+  axios.get<{ name: string }[]>(
+    `${baseUrl}api/v4/projects/${id}/repository/branches?access_token=${accessTokenn}`
   )

@@ -67,20 +67,20 @@ const Settings = () => (
           </span>
           <div className="w-full flex flex-col">
             <div className="flex items-center gap-5 py-5">
-              <label className="text-semibold">Email</label>
+              <span className="text-semibold">Email</span>
               <span className="text-gray-500">test@mail.com</span>
-              <a className="text-sm font-light text-blue-500 hover:underline cursor-pointer hover:underline-offset-2">
+              <button className="text-sm font-light text-blue-500 hover:underline cursor-pointer hover:underline-offset-2">
                 modify
-              </a>
+              </button>
             </div>
 
             <div className="border-b border-gray-300" />
             <div className="flex items-center gap-5 py-5">
-              <label className="text-semibold">Password</label>
+              <span className="text-semibold">Password</span>
               <span className="text-gray-500">************</span>
-              <a className="text-sm font-light text-blue-500 hover:underline cursor-pointer hover:underline-offset-2">
+              <button className="text-sm font-light text-blue-500 hover:underline cursor-pointer hover:underline-offset-2">
                 modify
-              </a>
+              </button>
             </div>
           </div>
 
@@ -92,6 +92,6 @@ const Settings = () => (
       </div>
     </section>
   </div>
-);
+)
 
-export default Settings;
+export default Settings

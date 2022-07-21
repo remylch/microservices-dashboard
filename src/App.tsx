@@ -1,24 +1,24 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react"
 
-import { Routes, Route, useNavigate } from "react-router-dom";
-import Login from "./components/Login/Login";
-import Sidebar from "./components/Home/Sidebar";
-import Code from "./components/Home/Code";
-import Runners from "./components/Home/Runners";
-import Settings from "./components/Home/Settings";
+import { Routes, Route, useNavigate } from "react-router-dom"
+import Login from "./components/Login/Login"
+import Sidebar from "./components/Home/Sidebar"
+import Code from "./components/Home/Code"
+import Runners from "./components/Home/Runners"
+import Settings from "./components/Home/Settings"
 
 function App() {
-  const navigate = useNavigate();
-  const [isAuth, setIsAuth] = useState(false);
+  const navigate = useNavigate()
+  const [isAuth, setIsAuth] = useState(false)
 
-  const checkAuth = () => {
-    setIsAuth(true);
-    navigate("/code");
-  };
+  const checkAuth = useCallback(() => {
+    setIsAuth(true)
+    navigate("/code")
+  }, [])
 
   useEffect(() => {
-    checkAuth();
-  }, []);
+    checkAuth()
+  }, [isAuth])
 
   return (
     <>
@@ -42,7 +42,7 @@ function App() {
         </div>
       </div>
     </>
-  );
+  )
 }
 
-export default App;
+export default App

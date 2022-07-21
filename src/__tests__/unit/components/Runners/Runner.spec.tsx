@@ -4,7 +4,7 @@
 
 import Runner from "../../../../components/Runners/runner"
 import { screen, render } from "@testing-library/react"
-import { RunnerType } from "../../../../types/runner-types"
+import { RunnerType } from "../../../../types/gitlab/runner-types"
 import "@testing-library/jest-dom/extend-expect"
 
 function createRunner(online: boolean) {
@@ -50,7 +50,7 @@ describe("test Runner component", () => {
     const rIp = screen.getByTestId("runner-ip")
     const rDesc = screen.getByTestId("runner-description")
     const checkIcon = screen.getByTestId("check-icon")
-    expect(checkIcon).toBeVisible
+    expect(checkIcon).toBeVisible()
     expect(rName).toHaveTextContent(name)
     expect(rId).toHaveTextContent(id)
     expect(rIp).toHaveTextContent(ipAddress)
@@ -59,7 +59,7 @@ describe("test Runner component", () => {
 
   it("should renderer cross-icon when runner not online", () => {
     createRunner(false)
-    expect(screen.getByTestId("cross-icon")).toBeVisible
+    expect(screen.getByTestId("cross-icon")).toBeVisible()
   })
 })
 

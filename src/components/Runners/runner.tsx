@@ -3,7 +3,7 @@ import { VscDebugStart, VscDebugStop, VscRefresh } from "react-icons/vsc"
 import { BsCheck } from "react-icons/bs"
 import { IoIosCloseCircleOutline } from "react-icons/io"
 import { IoGitBranch, IoCloseCircleOutline } from "react-icons/io5"
-import { RunnerType } from "../../types/runner-types"
+import { RunnerType } from "../../types/gitlab/runner-types"
 import useRunner from "../../hooks/runners-hooks/useRunner"
 
 const Runner: React.FC<RunnerType> = ({
@@ -40,7 +40,7 @@ const Runner: React.FC<RunnerType> = ({
         )}
       </div>
       <div className="flex py-4 items-center gap-3 justify-between">
-        <label data-testid="runner-ip">{ipAddress}</label>
+        <span data-testid="runner-ip">{ipAddress}</span>
         <p data-testid="runner-description">{description}</p>
       </div>
       <div className="flex items-center py-2  border-b border-gray-200">
@@ -65,7 +65,7 @@ const Runner: React.FC<RunnerType> = ({
                 d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
               ></path>
             </svg>
-            <label>last job running</label>{" "}
+            <span>last job running</span>
           </>
         ) : (
           <div className="flex items-center justify-center gap-5">
