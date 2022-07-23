@@ -1,10 +1,10 @@
 const Settings = () => (
-  <div className="h-full  flex flex-1 flex-col min-h-screen">
+  <div className="h-full  flex flex-1 flex-col min-h-screen relative z-10">
     <section className="flex flex-1 my-10 mx-8 ">
       <div className="flex flex-col mt-5 w-full">
         {/* gitlab informations */}
         <div className="shadow-md border border-gray-200 w-full p-5 pt-7 rounded-lg mb-10 relative">
-          <span className="absolute left-5 -top-4 bg-white px-3 text-gray-500">
+          <span className="absolute z-10 left-5 -top-4 bg-white px-3 text-gray-500">
             Gitlab Informations
           </span>
           <h2 className="mb-5 font-semibold">Gitlab DNS</h2>
@@ -32,7 +32,7 @@ const Settings = () => (
         </div>
         {/* services informations */}
         <div className="shadow-md border border-gray-200 w-full p-5 pt-7 rounded-lg mb-10 relative">
-          <span className="absolute left-5 -top-4 bg-white px-3 text-gray-500">
+          <span className="absolute z-10 left-5 -top-4 bg-white px-3 text-gray-500">
             Services Informations
           </span>
           <h2 className="mb-5 font-semibold">Services up : </h2>
@@ -62,7 +62,7 @@ const Settings = () => (
         </div>
         {/* bottom buttons */}
         <div className="shadow-md flex flex-col border border-gray-200 w-full p-5 pt-7 rounded-lg mb-5 relative">
-          <span className="absolute left-5 -top-4 bg-white px-3 text-gray-500">
+          <span className="absolute z-10 left-5 -top-4 bg-white px-3 text-gray-500">
             Account
           </span>
           <div className="w-full flex flex-col">

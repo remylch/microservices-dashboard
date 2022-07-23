@@ -2,7 +2,7 @@ import React from "react"
 import { VscDebugStart, VscDebugStop, VscRefresh } from "react-icons/vsc"
 import { BsCheck } from "react-icons/bs"
 import { IoIosCloseCircleOutline } from "react-icons/io"
-import { IoGitBranch, IoCloseCircleOutline } from "react-icons/io5"
+import { IoCloseCircleOutline } from "react-icons/io5"
 import { RunnerType } from "../../types/gitlab/runner-types"
 import useRunner from "../../hooks/runners-hooks/useRunner"
 

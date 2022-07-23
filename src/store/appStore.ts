@@ -1,7 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit"
 import { RootState } from "./store"
-
-export type ColorModeType = "LIGHT" | "DARK"
+import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { checkTheme, ColorModeType } from "../utils/colorUtils"
 
 type GlobalAppStateType = {
   colorMode: ColorModeType
@@ -9,7 +8,7 @@ type GlobalAppStateType = {
 }
 
 export const defaultGlobalAppState: GlobalAppStateType = {
-  colorMode: "LIGHT",
+  colorMode: checkTheme(),
   sidebarOpen: true,
 }
 
@@ -17,20 +16,18 @@ const globalSlice = createSlice({
   name: "global",
   initialState: defaultGlobalAppState,
   reducers: {
-    toggleSidebar: (state) => {
-      state.sidebarOpen
-        ? (state.sidebarOpen = false)
-        : (state.sidebarOpen = true)
+    toggleSidebarWithValue: (state, action: PayloadAction<boolean>) => {
+      state.sidebarOpen = action.payload
     },
     toggleColorMode: (state) => {
-      state.colorMode === "LIGHT"
-        ? (state.colorMode = "DARK")
-        : (state.colorMode = "LIGHT")
+      state.colorMode === "light"
+        ? (state.colorMode = "dark")
+        : (state.colorMode = "light")
     },
   },
 })
 
-export const { toggleColorMode, toggleSidebar } = globalSlice.actions
+export const { toggleColorMode, toggleSidebarWithValue } = globalSlice.actions
 
 export const globalAppState = (state: RootState) => state.global
 
