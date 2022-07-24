@@ -18,7 +18,7 @@ code {
 
 @layer components {
   .btn-primary {
-    @apply px-4 py-2 bg-primary text-primary hover:bg-primary-200 rounded-full dark:bg-secondary dark:text-secondary;
+    @apply px-4 py-2 bg-primary text-secondary hover:bg-primary-200 rounded-full dark:bg-secondary dark:hover:bg-silver-pink dark:text-primary;
   }
 
   .btn-outline {
@@ -26,15 +26,15 @@ code {
   }
 
   .btn-disabled {
-    @apply px-4 py-2 bg-fade-blue text-secondary-light rounded-full;
+    @apply px-4 py-2 bg-gray-400 text-white rounded-full cursor-not-allowed;
   }
 
   .btn-danger {
-    @apply px-4 py-2 bg-red-600 hover:bg-red-700 text-primary-dark rounded-full;
+    @apply px-4 py-2 bg-red-600 hover:bg-red-700 text-secondary rounded-full w-fit font-semibold;
   }
 
   .selector {
-    @apply h-10 w-40 rounded-lg shadow-sm border-gray-100 border;
+    @apply h-10 w-40 rounded-sm p-2 shadow-sm bg-secondary dark:bg-primary text-primary dark:text-secondary;
   }
   .runner-button {
     @apply bg-blue-500 text-white w-full px-3 py-1 rounded-md flex items-center justify-between gap-3 hover:bg-blue-700;

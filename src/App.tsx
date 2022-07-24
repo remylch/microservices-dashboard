@@ -31,7 +31,7 @@ function App() {
   return (
     <>
       {colorMode && (
-        <div className="min-h-screen flex w-full bg-white">
+        <div className="min-h-screen flex w-full bg-white dark:bg-fade-blue">
           {isAuth !== undefined && <Sidebar />}
           <div className=" w-full">
             <Routes>

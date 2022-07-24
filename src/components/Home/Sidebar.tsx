@@ -117,7 +117,7 @@ const Sidebar = () => {
             ) : (
               <label
                 id="labelLinkName"
-                className="absolute z-50 bg-white hidden group-hover:block px-3 py-1 rounded-full border border-gray-300 shadow-sm top-1/2 translate-y-[-50%] left-[110%] duration-300 ease-in-out transform text-blue-500"
+                className="absolute z-50 bg-white dark:bg-primary hidden group-hover:block px-3 py-1 rounded-full border border-gray-300 dark:border-transparent shadow-sm top-1/2 translate-y-[-50%] left-[110%] duration-300 ease-in-out transform text-primary dark:text-secondary"
               >
                 {link.name}
               </label>

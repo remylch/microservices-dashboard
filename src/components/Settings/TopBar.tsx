@@ -16,7 +16,10 @@ const TopBar: React.FC<Props> = ({
   return (
     <div className="h-24 flex items-center gap-5 px-10 border-b border-gray-100 w-full">
       <div>
-        <label htmlFor="project" className="mr-5">
+        <label
+          htmlFor="project"
+          className="mr-5 font-semibold text-lg text-primary dark:text-secondary"
+        >
           Projet
         </label>
         <select
@@ -40,7 +43,11 @@ const TopBar: React.FC<Props> = ({
       <div>
         {branchs && (
           <>
-            <label data-testid="label-branch" htmlFor="branch" className="mr-5">
+            <label
+              data-testid="label-branch"
+              htmlFor="branch"
+              className="mr-5 font-semibold text-lg text-primary dark:text-secondary"
+            >
               Branche
             </label>
             <select

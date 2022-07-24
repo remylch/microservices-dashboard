@@ -85,17 +85,19 @@ const Commits: React.FC<ICommits> = ({ commits, idProjectSelected }) => {
       <div className="p-10 flex h-full w-full flex-col gap-5 border-dashed border-2 border-gray-200 rounded-md">
         {idProjectSelected ? (
           <>
-            <h3 className="text-gray-500 font-bold text-xl">Latests commits</h3>
+            <h3 className="text-primary dark:text-secondary font-bold text-xl">
+              Latests commits
+            </h3>
             {commits ? (
               commits.map((commit) => <Commit key={commit.id} {...commit} />)
             ) : (
-              <span className="text-lg text-gray-400 font-semibold text-center">
+              <span className="text-lg text-gray-400 dark:text-fade-blue font-semibold text-center">
                 Awaiting for new commits...
               </span>
             )}
           </>
         ) : (
-          <div className="flex font-semibold flex-1 justify-center items-center text-gray-500">
+          <div className="flex font-semibold flex-1 justify-center items-center text-gray-500 dark:text-secondary">
             <h1>No project selected.</h1>
           </div>
         )}
@@ -110,12 +112,12 @@ const Commit: React.FC<CommitType> = ({ author_name, created_at, message }) => {
   const isMerge = message.toLowerCase().trim().includes("merge")
   return (
     <div className="flex flex-col px-5 py-2 border rounded-md shadow-sm">
-      <div className="font-ligh text-sm text-gray-500 flex gap-3">
+      <div className="font-ligh text-sm text-gray-500 dark:text-secondary flex gap-3">
         <span>{date}</span>
         <span>{hour}</span>
       </div>
       <div className={`flex items-center gap-2 rounded-md py-1 px-2 `}>
-        <span className="text-black">{author_name}</span>
+        <span className="text-primary dark:text-secondary">{author_name}</span>
         {isMerge ? (
           <div className="bg-emerald-500 flex w-[100px] items-center justify-center py-1 px-2 rounded-full text-white">
             <IoGitMerge className="w-5 h-5 pt-1" />
@@ -127,7 +129,9 @@ const Commit: React.FC<CommitType> = ({ author_name, created_at, message }) => {
             <span>commit</span>
           </div>
         )}
-        <q className="text-gray-600 text-sm font-semibold">{message}</q>
+        <q className="text-gray-600 dark:text-secondary text-sm font-semibold">
+          {message}
+        </q>
       </div>
     </div>
   )
