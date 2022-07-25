@@ -13,6 +13,8 @@ function createTopBar() {
       { name: "p1", id: "1" },
       { name: "p2", id: "2" },
     ],
+    branchs: [],
+    setBranchSelected: jest.fn(),
     setIdProjectSelected: jest.fn(),
   }
   render(<TopBar {...topBarProps} />)

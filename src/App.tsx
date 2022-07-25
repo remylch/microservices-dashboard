@@ -1,30 +1,45 @@
 import { useCallback, useEffect, useState } from "react"
-
 import { Routes, Route, useNavigate } from "react-router-dom"
 import Login from "./components/Login/Login"
 import Sidebar from "./components/Home/Sidebar"
 import Code from "./components/Home/Code"
 import Runners from "./components/Home/Runners"
 import Settings from "./components/Home/Settings"
-import { checkTheme } from "./utils/colorUtils"
 import { localStorageColorValue } from "./utils/localStorageUtils"
-import useColorTheme from "./hooks/useColorTheme"
-import { useAppSelector } from "./store/store"
-
-checkTheme()
+import { useAppDispatch, useAppSelector } from "./store/store"
+import { useGetUserInformationsQuery } from "./api/userAPI"
+import { cleanupGitlab, setUpGitlab } from "./store/gitlabStore"
 
 function App() {
   const navigate = useNavigate()
   const [isAuth, setIsAuth] = useState(false)
   const { colorMode } = useAppSelector((state) => state.global)
+  const dispatch = useAppDispatch()
+
+  const { refetch, data: userData } = useGetUserInformationsQuery()
+
+  useEffect(() => {
+    userData &&
+      dispatch(
+        setUpGitlab({
+          token: userData.data.gitlab_access.accessToken,
+          url: userData.data.gitlab_access.dns,
+        })
+      )
+    return () => {
+      dispatch(cleanupGitlab())
+    }
+  }, [userData])
 
   const checkAuth = useCallback(() => {
     localStorage.setItem(localStorageColorValue, "light")
     setIsAuth(true)
-    navigate("/code")
+    if (isAuth) navigate("/code")
   }, [])
 
   useEffect(() => {
+    refetch()
+    console.log("fetched")
     checkAuth()
   }, [isAuth])
 

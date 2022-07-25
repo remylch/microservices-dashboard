@@ -19,22 +19,18 @@ export const gitlabSlice = createSlice({
       state: DefaultGitlabType,
       action: PayloadAction<DefaultGitlabType>
     ) => {
-      state = action.payload
+      state.token = action.payload.token
+      state.url = action.payload.url
     },
     cleanupGitlab: (state: DefaultGitlabType) => {
-      state = defaultGitlabState
+      state.token = ""
+      state.url = ""
     },
   },
 })
 
 export const { cleanupGitlab, setUpGitlab } = gitlabSlice.actions
 
-export const gitlabCredentials = () => {
-  const state = store.getState().gitlab
-  return {
-    token: state.token,
-    url: state.url,
-  }
-}
+export const gitlabCredentials = () => store.getState().gitlab
 
 export default gitlabSlice.reducer

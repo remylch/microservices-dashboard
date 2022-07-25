@@ -9,7 +9,7 @@ const Runners = () => {
   return (
     <div className="flex flex-col p-5 w-full">
       <div className="relative border border-gray-300 mb-10">
-        <h3 className="absolute -top-3 left-8 bg-white dark:bg-fade-blue px-3">
+        <h3 className="absolute -top-3 left-8 bg-white dark:bg-fade-blue text-primary dark:text-secondary px-3">
           Running
         </h3>
       </div>
@@ -31,13 +31,16 @@ const Runners = () => {
             />
           ))
         ) : (
-          <span data-testid="message-no-runner-running">
+          <span
+            data-testid="message-no-runner-running"
+            className=" text-primary dark:text-secondary"
+          >
             No runner is currently running.
           </span>
         )}
       </div>
       <div className="relative border border-gray-300 my-10">
-        <h3 className="absolute -top-3 left-8 bg-white dark:bg-fade-blue px-3">
+        <h3 className="absolute -top-3 left-8 bg-white dark:bg-fade-blue  text-primary dark:text-secondary px-3">
           Terminated
         </h3>
       </div>
